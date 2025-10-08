@@ -7,7 +7,7 @@ Make sure your Unreal project is version **5.5** or above. In the root folder of
 ### Source Graphs & Patches
 The metasounds in the ***source graphs*** folder and the ***patches*** folder contain audio logic to use as nodes. To use them in your own metasound just search for their name (use the versions without prefixes).
 <img src="readmeimg/sourcepatches.png" alt="Screenshot" width="550">
-##### Containers
+### Containers
 The amount of logic in the source graphs may be quite overwhelming so in the ***containers*** folder you can find simpler looking versions of the logic (that just use the source graph as nodes). Instead of creating new metasounds, you can simply duplicate one of these containers to use as your new baseline.
 
 The containers contain all the same inputs as the corresponding source graphs but some of these inputs are not connected to the node for easier manual editing. 
@@ -26,7 +26,7 @@ The following containers need to be stopped in this way (if you want them to be 
 - [FlipFlop](#FlipFlop)
 - [State Loops](#State Loops)
 - [Shuffle Playlist](#Shuffle Playlist)
-##### Advanced Loop & Scatterer
+### Advanced Loop & Scatterer
 The [Advanced Loop](#Advanced Loop) & the [Scatterer](#Scatterer) both need to run custom metasound logic when stopping, this means that we cannot use the same blueprint nodes as the others. However they cannot be one-shots either ; they wouldn’t be able to virtualize.
 If you want them destroyed when stopped, you must place the actor component `DEM_StopLoop` found in the ***ActorComponent*** folder on the actor with the sound component.
 ![](readmeimg/acstoploop.png)
@@ -43,7 +43,7 @@ The debugging tool has the following options :
 **Show File Path?** - Toggle to show the complete wave asset path on top of just the file name for the playing wave asset.
 **Text Color** - Changes the display color of the debug text.
 **Multiple Component Index** - If the debug tool is placed on an actor with multiple audio components, choose which component to debug display (0 being the first one). To have multiple audio components on the same actor be debuggable at the same time, you will need to change the way the tool manages display keys.
-##### Using with your own Metasounds
+### Using with your own Metasounds
 To make your own metasounds compatible with this debugging tool, you need to make sure they have five outputs named according to this list : 
 - `Event Update` (string) - in which you log the important actions
 - `Playing Wave File` (string) - for the playing file’s name
@@ -59,15 +59,16 @@ Things become more complicated when routing information from multiple wave playe
 Look into the Debug Patches folder for tools to help you route the information.
 ## Included Presets
 *Every preset and patch made to be used as nodes all have tooltips for their inputs & outputs. Hold your mouse over them for more information.*
-##### Simple One Shot
+### Simple One Shot
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/simpleoneshot.png" alt="Screenshot" width="350">
 Plays a simple one shot with pitch shifting and debugging outputs.
 
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
-##### Random One Shot
+### Random One Shot
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/randomoneshot.png" alt="Screenshot" width="350">
 Plays a one shot randomly selected with optional pitch shifting and debugging outputs.
@@ -75,7 +76,7 @@ Plays a one shot randomly selected with optional pitch shifting and debugging ou
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
-##### Simple Loop
+### Simple Loop
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/simpleloop.png" alt="Screenshot" width="350">
 Loops a sound with a random start time, fades in/out, and debugging outputs
@@ -85,7 +86,7 @@ Loops a sound with a random start time, fades in/out, and debugging outputs
 - `Playback Finished` ([not for containers](#Stopping Loops))
 - `Fade In Completed`
 - `Fade Out Started` ([not for containers](#Stopping Loops))
-##### Random Loop
+### Random Loop
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/randomloop.png" alt="Screenshot" width="350">
 Loops a single asset randomly chosen from a list of assets with a random start time, fades in/out and debugging outputs.
@@ -95,7 +96,7 @@ Loops a single asset randomly chosen from a list of assets with a random start t
 - `Playback Finished` ([not for containers](#Stopping Loops))
 - `Fade In Completed`
 - `Fade Out Started` ([not for containers](#Stopping Loops))
-##### Switch
+### Switch
 *Comes in both Mono & Stereo., with 8, 16, or 32 switch values.*
 <img src="readmeimg/Presets/switch.png" alt="Screenshot" width="350">
 Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#Random One Shot).
@@ -104,7 +105,7 @@ Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value inp
 - `Playback Started`
 - `Playback Finished`
 - `Switch Index Out Of Bounds`
-##### FlipFlop
+### FlipFlop
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/flipflop.png" alt="Screenshot" width="350">
 Crossfades between two different loops on command.
@@ -116,7 +117,7 @@ Crossfades between two different loops on command.
 - `Fade Out Started` ([not for containers](#Stopping Loops))
 - `Crossfade Started`
 - `Crossfade Completed`
-##### State Loops
+### State Loops
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/stateloops.png" alt="Screenshot" width="350">
 Plays a loop driven by a state value, on value change will crossfade into the corresponding version of the loop.
@@ -129,7 +130,7 @@ Plays a loop driven by a state value, on value change will crossfade into the co
 - `Crossfade Started`
 - `Crossfade Completed`
 - `State Change`
-##### Shuffle Playlist
+### Shuffle Playlist
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/shuffleplaylist.png" alt="Screenshot" width="350">
 Plays through a playlist of audio assets on shuffle with crossfades.
@@ -142,7 +143,7 @@ Plays through a playlist of audio assets on shuffle with crossfades.
 - `Crossfade Started`
 - `Crossfade Completed`
 - `Starting Next Track`
-##### Advanced Loop
+### Advanced Loop
 *Comes in both Mono & Stereo.*
 <img src="readmeimg/Presets/advancedloop.png" alt="Screenshot" width="350">
 Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#Advanced Loop & Scatterer).
@@ -152,7 +153,7 @@ Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Col
 - `Playback Finished`
 - `Startup Completed`
 - `Shutdown Started`
-##### Scatterer
+### Scatterer
 *Spatializes Mono Assets to Stereo Output.*
 <img src="readmeimg/Presets/scatterer.png" alt="Screenshot" width="350">
 Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#Advanced Loop & Scatterer).
@@ -162,25 +163,25 @@ Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garba
 - `Playback Finished`
 - `Scatterer Turned Off`
 ## Included Patches
-##### Get Pitch Shift
+### Get Pitch Shift
 <img src="readmeimg/Patches/getpitchshift.png" alt="Screenshot" width="350">
 Generates a random float value between -`Pitch Variation` and +`Pitch Variation` to be used as a pitch shifting input for a wave player.
-##### Random Start Time
+### Random Start Time
 <img src="readmeimg/Patches/randomstarttime.png" alt="Screenshot" width="350">
 Selects a random start time for a wav file using the file's length as the upper bounds of the selection.
-##### Modular Start Time
+### Modular Start Time
 <img src="readmeimg/Patches/modularstarttime.png" alt="Screenshot" width="350">
 Generates a random start time or returns start of the file if set to ignore.
-##### Timed Crossfade
+### Timed Crossfade
 <img src="readmeimg/Patches/timedcrossfade.png" alt="Screenshot" width="250">
 Allows for linear crossfading between two audio streams depending on an input crossfade length (time) in seconds.
-##### Trigger Select Overflow
+### Trigger Select Overflow
 <img src="readmeimg/Patches/triggerselectoverflow.png" alt="Screenshot" width="250">
 A `Trigger Select` node that returns overflow values and triggers instead of ignoring them. The returned `Overflow` value is `Index - 8` to be plugged into the next `Trigger Select` in the chain.
-##### Scatter Mono Asset
+### Scatter Mono Asset
 <img src="readmeimg/Patches/scattermonoasset.png" alt="Screenshot" width="350">
 Scatters a single mono asset (random distance, pan and pitch). Used in the [Scatterer](#Scatterer) source graph.
-##### Debug Patches
+### Debug Patches
 This small collection of patches are used to route string and wave values for [debugging](#Debugging) purposes.
 ## Credits & Licensing
 - Created by [Demute](https://www.demute.studio/).

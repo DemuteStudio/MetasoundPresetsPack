@@ -1,0 +1,4 @@
+- Created by [Demute](https://www.demute.studio/).
+- Free for personal and commercial use in your projects.
+- Please do not resell the pack.
+- Attribution is appreciated but not required.

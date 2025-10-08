@@ -70,6 +70,7 @@ Plays a simple one shot with pitch shifting and debugging outputs.
 - `Playback Finished`
 ### Random One Shot
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/randomoneshot.png" alt="Screenshot" width="350">
 Plays a one shot randomly selected with optional pitch shifting and debugging outputs.
 
@@ -78,6 +79,7 @@ Plays a one shot randomly selected with optional pitch shifting and debugging ou
 - `Playback Finished`
 ### Simple Loop
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/simpleloop.png" alt="Screenshot" width="350">
 Loops a sound with a random start time, fades in/out, and debugging outputs
 
@@ -88,6 +90,7 @@ Loops a sound with a random start time, fades in/out, and debugging outputs
 - `Fade Out Started` ([not for containers](#Stopping Loops))
 ### Random Loop
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/randomloop.png" alt="Screenshot" width="350">
 Loops a single asset randomly chosen from a list of assets with a random start time, fades in/out and debugging outputs.
 
@@ -98,6 +101,7 @@ Loops a single asset randomly chosen from a list of assets with a random start t
 - `Fade Out Started` ([not for containers](#Stopping Loops))
 ### Switch
 *Comes in both Mono & Stereo., with 8, 16, or 32 switch values.*
+
 <img src="readmeimg/Presets/switch.png" alt="Screenshot" width="350">
 Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#Random One Shot).
 
@@ -107,6 +111,7 @@ Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value inp
 - `Switch Index Out Of Bounds`
 ### FlipFlop
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/flipflop.png" alt="Screenshot" width="350">
 Crossfades between two different loops on command.
 
@@ -119,6 +124,7 @@ Crossfades between two different loops on command.
 - `Crossfade Completed`
 ### State Loops
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/stateloops.png" alt="Screenshot" width="350">
 Plays a loop driven by a state value, on value change will crossfade into the corresponding version of the loop.
 
@@ -132,6 +138,7 @@ Plays a loop driven by a state value, on value change will crossfade into the co
 - `State Change`
 ### Shuffle Playlist
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/shuffleplaylist.png" alt="Screenshot" width="350">
 Plays through a playlist of audio assets on shuffle with crossfades.
 
@@ -145,6 +152,7 @@ Plays through a playlist of audio assets on shuffle with crossfades.
 - `Starting Next Track`
 ### Advanced Loop
 *Comes in both Mono & Stereo.*
+
 <img src="readmeimg/Presets/advancedloop.png" alt="Screenshot" width="350">
 Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#Advanced Loop & Scatterer).
 
@@ -155,6 +163,7 @@ Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Col
 - `Shutdown Started`
 ### Scatterer
 *Spatializes Mono Assets to Stereo Output.*
+
 <img src="readmeimg/Presets/scatterer.png" alt="Screenshot" width="350">
 Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#Advanced Loop & Scatterer).
 
@@ -181,8 +190,10 @@ A `Trigger Select` node that returns overflow values and triggers instead of ign
 ### Scatter Mono Asset
 <img src="readmeimg/Patches/scattermonoasset.png" alt="Screenshot" width="350">
 Scatters a single mono asset (random distance, pan and pitch). Used in the [Scatterer](#Scatterer) source graph.
+
 ### Debug Patches
 This small collection of patches are used to route string and wave values for [debugging](#Debugging) purposes.
+
 ## Credits & Licensing
 - Created by [Demute](https://www.demute.studio/).
 - Free for personal and commercial use in your projects.

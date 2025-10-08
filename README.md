@@ -1,8 +1,11 @@
 ## Introduction
 As Dan Reynolds, the father of Metasounds, said: “*Metasounds are not just an implementation environment, they're a **design environment**.*” Yet in game audio, most implementation follows a handful of common designs. This pack provides professionally crafted presets for those designs, along with useful patches and a runtime debugging tool for faster, easier implementation.
+
 ## How to Install
 Make sure your Unreal project is version **5.5** or above. In the root folder of your project, create a plugins folder if it doesn’t already exist. Drag the `Demute_Metasound_PresetsAndPatches` folder into that new plugins folder. Then activate the plugin in edit > plugins.
+
 ![](readmeimg/install.png)
+
 ## How to Use
 ### Source Graphs & Patches
 The metasounds in the ***source graphs*** folder and the ***patches*** folder contain audio logic to use as nodes. To use them in your own metasound just search for their name (use the versions without prefixes).
@@ -20,6 +23,7 @@ Take for example the simple loop node. More often than not you will set the loop
 The same logic applies to the `Ignore Random Start Time` boolean value, this should be something that is “set and forget”. However it is an advanced pin and doesn’t show up on the node by default, to see it you must click on the arrow at the bottom of the node. 
 All unconnected inputs are put away at the top left of the graph so you can see at a glance which ones are not controlled via inputs.
 Float inputs are kept connected as they give us access to nice little dials to change values with. If the value you would like to set exceeds (or is less than) the max/min of the wheel, you can increase these values in the input editor (click on the input > Default Editor Options > Range).
+
 ## Stopping Loops
 The [containers](#Containers) containing looping metasound sources (not the sources themselves) do not have the `OneShot` interface, this allows them to virtualize when a player steps out of their attenuation range. This means that they do not have an `OnFinished` node and thus are not automatically grabbed up by garbage collection when they are done.
 
@@ -32,6 +36,7 @@ The following containers need to be stopped in this way (if you want them to be 
 - [FlipFlop](#FlipFlop)
 - [State Loops](#State-Loops)
 - [Shuffle Playlist](#Shuffle-Playlist)
+
 ### Advanced Loop & Scatterer
 The [Advanced Loop](#Advanced-Loop) & the [Scatterer](#Scatterer) both need to run custom metasound logic when stopping, this means that we cannot use the same blueprint nodes as the others. However they cannot be one-shots either ; they wouldn’t be able to virtualize.
 If you want them destroyed when stopped, you must place the actor component `DEM_StopLoop` found in the ***ActorComponent*** folder on the actor with the sound component.
@@ -53,9 +58,13 @@ Each [Included Preset](#Included-Presets) has a list of event update logs that t
 ![](readmeimg/debugtool.png)
 
 The debugging tool has the following options : 
+
 **Show File Path?** - Toggle to show the complete wave asset path on top of just the file name for the playing wave asset.
+
 **Text Color** - Changes the display color of the debug text.
+
 **Multiple Component Index** - If the debug tool is placed on an actor with multiple audio components, choose which component to debug display (0 being the first one). To have multiple audio components on the same actor be debuggable at the same time, you will need to change the way the tool manages display keys.
+
 ### Using with your own Metasounds
 To make your own metasounds compatible with this debugging tool, you need to make sure they have five outputs named according to this list : 
 - `Event Update` (string) - in which you log the important actions
@@ -71,8 +80,10 @@ Playback time is just hooked up to the wave player output of the same name.
 
 Things become more complicated when routing information from multiple wave players and randomly selected wave assets. 
 Look into the Debug Patches folder for tools to help you route the information.
+
 ## Included Presets
 *Every preset and patch made to be used as nodes all have tooltips for their inputs & outputs. Hold your mouse over them for more information.*
+
 ### Simple One Shot
 *Comes in both Mono & Stereo.*
 
@@ -82,6 +93,7 @@ Plays a simple one shot with pitch shifting and debugging outputs.
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
+
 ### Random One Shot
 *Comes in both Mono & Stereo.*
 
@@ -91,6 +103,7 @@ Plays a one shot randomly selected with optional pitch shifting and debugging ou
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
+
 ### Simple Loop
 *Comes in both Mono & Stereo.*
 
@@ -102,6 +115,7 @@ Loops a sound with a random start time, fades in/out, and debugging outputs
 - `Playback Finished` ([not for containers](#Stopping-Loops))
 - `Fade In Completed`
 - `Fade Out Started` ([not for containers](#Stopping-Loops))
+
 ### Random Loop
 *Comes in both Mono & Stereo.*
 
@@ -117,12 +131,13 @@ Loops a single asset randomly chosen from a list of assets with a random start t
 *Comes in both Mono & Stereo., with 8, 16, or 32 switch values.*
 
 <img src="readmeimg/Presets/switch.png" alt="Screenshot" width="350">
-Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#Random-One-Shot).
+Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#random-one-shot).
 
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
 - `Switch Index Out Of Bounds`
+
 ### FlipFlop
 *Comes in both Mono & Stereo.*
 
@@ -136,6 +151,7 @@ Crossfades between two different loops on command.
 - `Fade Out Started` ([not for containers](#Stopping-Loops))
 - `Crossfade Started`
 - `Crossfade Completed`
+
 ### State Loops
 *Comes in both Mono & Stereo.*
 
@@ -150,6 +166,7 @@ Plays a loop driven by a state value, on value change will crossfade into the co
 - `Crossfade Started`
 - `Crossfade Completed`
 - `State Change`
+
 ### Shuffle Playlist
 *Comes in both Mono & Stereo.*
 
@@ -164,27 +181,30 @@ Plays through a playlist of audio assets on shuffle with crossfades.
 - `Crossfade Started`
 - `Crossfade Completed`
 - `Starting Next Track`
+
 ### Advanced Loop
 *Comes in both Mono & Stereo.*
 
 <img src="readmeimg/Presets/advancedloop.png" alt="Screenshot" width="350">
-Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#Advanced-Loop-&-Scatterer).
+Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#advanced-loop--scatterer).
 
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
 - `Startup Completed`
 - `Shutdown Started`
+
 ### Scatterer
 *Spatializes Mono Assets to Stereo Output.*
 
 <img src="readmeimg/Presets/scatterer.png" alt="Screenshot" width="350">
-Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#Advanced-Loop-&-Scatterer).
+Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#advanced-loop--scatterer).
 
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
 - `Scatterer Turned Off`
+
 ## Included Patches
 
 ### Get Pitch Shift

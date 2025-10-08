@@ -27,13 +27,13 @@ The [containers](#Containers) containing looping metasound sources (not the sour
 
 To allow them to be collected by garbage collection when needed, these metasounds must be stopped with the `Fade Out` & `Stop` blueprint nodes.
 The following containers need to be stopped in this way (if you want them to be destroyed) : 
-- [Simple Loop](#Simple Loop)
-- [Random Loop](#Random Loop)
+- [Simple Loop](#Simple-Loop)
+- [Random Loop](#Random-Loop)
 - [FlipFlop](#FlipFlop)
-- [State Loops](#State Loops)
-- [Shuffle Playlist](#Shuffle Playlist)
+- [State Loops](#State-Loops)
+- [Shuffle Playlist](#Shuffle-Playlist)
 ### Advanced Loop & Scatterer
-The [Advanced Loop](#Advanced Loop) & the [Scatterer](#Scatterer) both need to run custom metasound logic when stopping, this means that we cannot use the same blueprint nodes as the others. However they cannot be one-shots either ; they wouldn’t be able to virtualize.
+The [Advanced Loop](#Advanced-Loop) & the [Scatterer](#Scatterer) both need to run custom metasound logic when stopping, this means that we cannot use the same blueprint nodes as the others. However they cannot be one-shots either ; they wouldn’t be able to virtualize.
 If you want them destroyed when stopped, you must place the actor component `DEM_StopLoop` found in the ***ActorComponent*** folder on the actor with the sound component.
 
 ![](readmeimg/acstoploop.png)
@@ -48,7 +48,7 @@ In the ***ActorComponent*** folder there is an actor component that can help you
 ![](readmeimg/debuggingmsg.png)
 
 Additionally, important actions within the metasound will also be displayed ; such as changing states, starting a crossfade, etc…
-Each [Included Preset](#Included Presets) has a list of event update logs that they can display.
+Each [Included Preset](#Included-Presets) has a list of event update logs that they can display.
 
 ![](readmeimg/debugtool.png)
 
@@ -99,9 +99,9 @@ Loops a sound with a random start time, fades in/out, and debugging outputs
 
 **List of Event Update Message**
 - `Playback Started`
-- `Playback Finished` ([not for containers](#Stopping Loops))
+- `Playback Finished` ([not for containers](#Stopping-Loops))
 - `Fade In Completed`
-- `Fade Out Started` ([not for containers](#Stopping Loops))
+- `Fade Out Started` ([not for containers](#Stopping-Loops))
 ### Random Loop
 *Comes in both Mono & Stereo.*
 
@@ -110,14 +110,14 @@ Loops a single asset randomly chosen from a list of assets with a random start t
 
 **List of Event Update Message**
 - `Playback Started`
-- `Playback Finished` ([not for containers](#Stopping Loops))
+- `Playback Finished` ([not for containers](#Stopping-Loops))
 - `Fade In Completed`
-- `Fade Out Started` ([not for containers](#Stopping Loops))
+- `Fade Out Started` ([not for containers](#Stopping-Loops))
 ### Switch
 *Comes in both Mono & Stereo., with 8, 16, or 32 switch values.*
 
 <img src="readmeimg/Presets/switch.png" alt="Screenshot" width="350">
-Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#Random One Shot).
+Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#Random-One-Shot).
 
 **List of Event Update Message**
 - `Playback Started`
@@ -131,9 +131,9 @@ Crossfades between two different loops on command.
 
 **List of Event Update Message**
 - `Playback Started`
-- `Playback Finished` ([not for containers](#Stopping Loops))
+- `Playback Finished` ([not for containers](#Stopping-Loops))
 - `Fade In Completed`
-- `Fade Out Started` ([not for containers](#Stopping Loops))
+- `Fade Out Started` ([not for containers](#Stopping-Loops))
 - `Crossfade Started`
 - `Crossfade Completed`
 ### State Loops
@@ -144,9 +144,9 @@ Plays a loop driven by a state value, on value change will crossfade into the co
 
 **List of Event Update Message**
 - `Playback Started`
-- `Playback Finished` ([not for containers](#Stopping Loops))
+- `Playback Finished` ([not for containers](#Stopping-Loops))
 - `Fade In Completed`
-- `Fade Out Started` ([not for containers](#Stopping Loops))
+- `Fade Out Started` ([not for containers](#Stopping-Loops))
 - `Crossfade Started`
 - `Crossfade Completed`
 - `State Change`
@@ -158,9 +158,9 @@ Plays through a playlist of audio assets on shuffle with crossfades.
 
 **List of Event Update Message**
 - `Playback Started`
-- `Playback Finished` ([not for containers](#Stopping Loops))
+- `Playback Finished` ([not for containers](#Stopping-Loops))
 - `Fade In Completed`
-- `Fade Out Started` ([not for containers](#Stopping Loops))
+- `Fade Out Started` ([not for containers](#Stopping-Loops))
 - `Crossfade Started`
 - `Crossfade Completed`
 - `Starting Next Track`
@@ -168,7 +168,7 @@ Plays through a playlist of audio assets on shuffle with crossfades.
 *Comes in both Mono & Stereo.*
 
 <img src="readmeimg/Presets/advancedloop.png" alt="Screenshot" width="350">
-Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#Advanced Loop & Scatterer).
+Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#Advanced-Loop-&-Scatterer).
 
 **List of Event Update Message**
 - `Playback Started`
@@ -179,30 +179,37 @@ Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Col
 *Spatializes Mono Assets to Stereo Output.*
 
 <img src="readmeimg/Presets/scatterer.png" alt="Screenshot" width="350">
-Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#Advanced Loop & Scatterer).
+Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#Advanced-Loop-&-Scatterer).
 
 **List of Event Update Message**
 - `Playback Started`
 - `Playback Finished`
 - `Scatterer Turned Off`
 ## Included Patches
+
 ### Get Pitch Shift
 <img src="readmeimg/Patches/getpitchshift.png" alt="Screenshot" width="350">
+
 Generates a random float value between -`Pitch Variation` and +`Pitch Variation` to be used as a pitch shifting input for a wave player.
 ### Random Start Time
 <img src="readmeimg/Patches/randomstarttime.png" alt="Screenshot" width="350">
+
 Selects a random start time for a wav file using the file's length as the upper bounds of the selection.
 ### Modular Start Time
 <img src="readmeimg/Patches/modularstarttime.png" alt="Screenshot" width="350">
+
 Generates a random start time or returns start of the file if set to ignore.
 ### Timed Crossfade
 <img src="readmeimg/Patches/timedcrossfade.png" alt="Screenshot" width="250">
+
 Allows for linear crossfading between two audio streams depending on an input crossfade length (time) in seconds.
 ### Trigger Select Overflow
 <img src="readmeimg/Patches/triggerselectoverflow.png" alt="Screenshot" width="250">
+
 A `Trigger Select` node that returns overflow values and triggers instead of ignoring them. The returned `Overflow` value is `Index - 8` to be plugged into the next `Trigger Select` in the chain.
 ### Scatter Mono Asset
 <img src="readmeimg/Patches/scattermonoasset.png" alt="Screenshot" width="350">
+
 Scatters a single mono asset (random distance, pan and pitch). Used in the [Scatterer](#Scatterer) source graph.
 
 ### Debug Patches

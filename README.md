@@ -4,7 +4,7 @@ As Dan Reynolds, the father of Metasounds, said: “*Metasounds are not just an 
 Make sure your Unreal project is version **5.5** or above. In the root folder of your project, create a plugins folder if it doesn’t already exist. Drag the `Demute_Metasound_PresetsAndPatches` folder into that new plugins folder. Then activate the plugin in edit > plugins.
 ![](readmeimg/install.png)
 ## How to Use
-##### Source Graphs & Patches
+### Source Graphs & Patches
 The metasounds in the ***source graphs*** folder and the ***patches*** folder contain audio logic to use as nodes. To use them in your own metasound just search for their name (use the versions without prefixes).
 <img src="readmeimg/sourcepatches.png" alt="Screenshot" width="550">
 ##### Containers

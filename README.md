@@ -131,7 +131,7 @@ Loops a single asset randomly chosen from a list of assets with a random start t
 *Comes in both Mono & Stereo., with 8, 16, or 32 switch values.*
 
 <img src="readmeimg/Presets/switch.png" alt="Screenshot" width="350">
-Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a [Random One Shot](#random-one-shot).
+Play a random one-shot from one of 8/16/32 arrays driven by the Switch Value input, each individual switch acts like a Random One Shot.
 
 **List of Event Update Message**
 - `Playback Started`
@@ -186,7 +186,7 @@ Plays through a playlist of audio assets on shuffle with crossfades.
 *Comes in both Mono & Stereo.*
 
 <img src="readmeimg/Presets/advancedloop.png" alt="Screenshot" width="350">
-Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Collection Notice](#advanced-loop--scatterer).
+Loops a wave asset with a startup one-shot and a shutdown one-shot.
 
 **List of Event Update Message**
 - `Playback Started`
@@ -198,7 +198,7 @@ Loops a wave asset with a startup one-shot and a shutdown one-shot. [Garbage Col
 *Spatializes Mono Assets to Stereo Output.*
 
 <img src="readmeimg/Presets/scatterer.png" alt="Screenshot" width="350">
-Scatters up to 8 one-shots simultaneously (random distance, pan & pitch). [Garbage Collection Notice](#advanced-loop--scatterer).
+Scatters up to 8 one-shots simultaneously (random distance, pan & pitch).
 
 **List of Event Update Message**
 - `Playback Started`
